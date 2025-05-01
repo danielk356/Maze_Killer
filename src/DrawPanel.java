@@ -8,7 +8,7 @@ public class DrawPanel extends JPanel implements MouseListener {
 
     public DrawPanel() {
         this.addMouseListener(this);
-        this.setBackground(Color.BLACK);
+        this.setBackground(Color.GRAY);
     }
 
     protected void paintComponent(Graphics g) {
