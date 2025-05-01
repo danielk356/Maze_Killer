@@ -1,0 +1,56 @@
+import java.awt.*;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
+
+public class DrawPanel extends JPanel implements MouseListener {
+
+
+    public DrawPanel() {
+        this.addMouseListener(this);
+        this.setBackground(Color.BLACK);
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int x = 20;
+        int y = 20;
+        Graphics2D g2 = (Graphics2D) g;
+
+        for (int i = 0; i < 15; i++) {
+            for (int a = 0; a < 20; a++) {
+                g.drawRect(x, y, 40, 40);
+                x += 50;
+            }
+            x = 20;
+            y += 50;
+        }
+    }
+
+
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+}
