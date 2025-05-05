@@ -1,15 +1,20 @@
 import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
-public class DrawPanel extends JPanel implements MouseListener {
+public class DrawPanel extends JPanel implements KeyListener, MouseListener {
     private Maze mazes;
+    private Player player;
 
     public DrawPanel() {
         this.addMouseListener(this);
+        this.addKeyListener(this);
         this.setBackground(Color.GRAY);
         mazes = new Maze();
+        player = new Player();
     }
 
     protected void paintComponent(Graphics g) {
@@ -55,6 +60,21 @@ public class DrawPanel extends JPanel implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }
