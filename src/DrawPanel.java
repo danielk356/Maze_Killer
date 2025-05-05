@@ -4,11 +4,12 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 
 public class DrawPanel extends JPanel implements MouseListener {
-
+    private Maze mazes;
 
     public DrawPanel() {
         this.addMouseListener(this);
         this.setBackground(Color.GRAY);
+        mazes = new Maze();
     }
 
     protected void paintComponent(Graphics g) {
@@ -20,6 +21,9 @@ public class DrawPanel extends JPanel implements MouseListener {
         for (int i = 0; i < 15; i++) {
             for (int a = 0; a < 20; a++) {
                 g.drawRect(x, y, 40, 40);
+                if (mazes.getMaze1()[i][a] == 1) {
+                    g.fillRect(x, y, 40, 40);
+                }
                 x += 50;
             }
             x = 20;
