@@ -4,6 +4,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.awt.Point;
+import java.awt.image.ImageObserver;
 
 public class DrawPanel extends JPanel implements KeyListener, MouseListener {
     private Maze mazes;
@@ -23,17 +27,22 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener {
         int y = 20;
         Graphics2D g2 = (Graphics2D) g;
 
-        for (int i = 0; i < 15; i++) {
-            for (int a = 0; a < 20; a++) {
+        for (int r = 0; r < 15; r++) {
+            for (int c = 0; c < 20; c++) {
                 g.drawRect(x, y, 40, 40);
-                if (mazes.getMaze1()[i][a] == 1) {
+                if (mazes.getMaze1()[r][c] == 1) {
                     g.fillRect(x, y, 40, 40);
+                }
+                if (r == player.getYCoordinate() && c == player.getXCoordinate()) {
+                    g.drawImage(player.getImage(), x, y, 40, 40, Color.BLACK, null);
                 }
                 x += 50;
             }
             x = 20;
             y += 50;
         }
+
+
     }
 
 
