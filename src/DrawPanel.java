@@ -34,7 +34,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener {
                     g.fillRect(x, y, 40, 40);
                 }
                 if (r == player.getYCoordinate() && c == player.getXCoordinate()) {
-                    g.drawImage(player.getImage(), x, y, 40, 40, Color.BLACK, null);
+                    g.drawImage(player.getImage(), x, y, 40, 40, null);
                 }
                 x += 50;
             }

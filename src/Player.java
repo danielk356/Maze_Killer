@@ -37,7 +37,7 @@ public class Player {
     public BufferedImage readImage() {
         try {
             BufferedImage image;
-            image = ImageIO.read(new File("images/Player.ico"));
+            image = ImageIO.read(new File("images/Player.jpg"));
             return image;
         }
         catch (IOException e) {
