@@ -25,6 +25,7 @@ public class DrawPanel extends JPanel implements KeyListener
         super.paintComponent(g);
         int x = 20;
         int y = 20;
+        g.setColor(Color.BLACK);
         Graphics2D g2 = (Graphics2D) g;
 
         for (int r = 0; r < 15; r++)
@@ -35,10 +36,16 @@ public class DrawPanel extends JPanel implements KeyListener
                 {
                     g.fillRect(x, y, 40, 40);
                 }
+                if (mazes.getMaze1()[r][c] == 2) {
+                    g.setColor(Color.YELLOW);
+                    g.fillRect(x, y, 40, 40);
+                    g.setColor(Color.BLACK);
+                }
                 if (r == player.getYCoordinate() && c == player.getXCoordinate())
                 {
                     g.drawImage(player.getImage(), x, y, 40, 40, null);
                 }
+
                 x += 50;
             }
             x = 20;
