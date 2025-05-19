@@ -5,14 +5,46 @@ import java.util.Scanner;
 
 public class Maze {
     private int[][] maze1;
+    private int[][] maze2;
+    private int[][] maze3;
+    private boolean maze1Win;
+    private boolean maze2Win;
+    private boolean maze3Win;
     private ArrayList<int[][]> mazes;
 
     public Maze() {
         maze1 = getMaze("mazes/Maze1");
+        mazes.add(maze1);
+        mazes.add(maze2);
+        mazes.add(maze3);
     }
 
     public int[][] getMaze1() {
         return maze1;
+    }
+
+    public int[][] getMaze2() {
+        return maze2;
+    }
+
+    public int[][] getMaze3() {
+        return maze3;
+    }
+
+    public boolean isMaze1Win() {
+        return maze1Win;
+    }
+
+    public boolean isMaze2Win() {
+        return maze2Win;
+    }
+
+    public boolean isMaze3Win() {
+        return maze3Win;
+    }
+
+    public ArrayList<int[][]> getMazes() {
+        return mazes;
     }
 
     // testing if getMaze works
