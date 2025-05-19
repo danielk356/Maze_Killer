@@ -68,7 +68,20 @@ public class DrawPanel extends JPanel implements KeyListener
             if (player.getXCoordinate() != mazes.getMaze1()[0].length - 1 && mazes.getMaze1()[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
             {
                 player.setXCoordinate(player.getXCoordinate() + 1);
-
+            }
+        }
+        if (e.getKeyCode() == KeyEvent.VK_W)
+        {
+            if (player.getYCoordinate() != 0 && mazes.getMaze1()[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
+            {
+                player.setYCoordinate(player.getYCoordinate() - 1);
+            }
+        }
+        if (e.getKeyCode() == KeyEvent.VK_S)
+        {
+            if (player.getYCoordinate() != mazes.getMaze1().length - 1 && mazes.getMaze1()[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
+            {
+                player.setYCoordinate(player.getYCoordinate() + 1);
             }
         }
     }
@@ -78,3 +91,5 @@ public class DrawPanel extends JPanel implements KeyListener
 
     }
 }
+
+
