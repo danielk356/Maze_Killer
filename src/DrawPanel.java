@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.awt.image.ImageObserver;
+import java.util.ArrayList;
 
 public class DrawPanel extends JPanel implements KeyListener
 {
@@ -31,6 +32,10 @@ public class DrawPanel extends JPanel implements KeyListener
         {
             for (int c = 0; c < 20; c++) {
                 g.drawRect(x, y, 40, 40);
+
+                if (!playerSight(r, c)) {
+                    g.fillRect(x, y, 40, 40);
+                }
                 if (mazes.getMaze1()[r][c] == 1)
                 {
                     g.fillRect(x, y, 40, 40);
@@ -51,6 +56,28 @@ public class DrawPanel extends JPanel implements KeyListener
             y += 50;
         }
 
+    }
+
+    private boolean playerSight(int r, int c)
+    {
+        String currentPoint = r + "," + c;
+
+        ArrayList<String> playerSights = new ArrayList<>();
+        playerSights.add((player.getYCoordinate() - 1) + "," + (player.getXCoordinate() - 1));
+        playerSights.add((player.getYCoordinate() - 1) + "," + (player.getXCoordinate()));
+        playerSights.add((player.getYCoordinate() - 1) + "," + (player.getXCoordinate() + 1));
+        playerSights.add((player.getYCoordinate()) + "," + (player.getXCoordinate() - 1));
+        playerSights.add((player.getYCoordinate()) + "," + (player.getXCoordinate() + 1));
+        playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate() - 1));
+        playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate()));
+        playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate() + 1));
+
+        for (int i = 0; i < playerSights.size(); i++) {
+            if (currentPoint.equals(playerSights.get(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

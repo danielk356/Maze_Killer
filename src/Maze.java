@@ -14,9 +14,13 @@ public class Maze {
 
     public Maze() {
         maze1 = getMaze("mazes/Maze1");
+        mazes = new ArrayList<>();
         mazes.add(maze1);
-        mazes.add(maze2);
-        mazes.add(maze3);
+        //mazes.add(maze2);
+        //mazes.add(maze3);
+        maze1Win = false;
+        maze2Win = false;
+        maze3Win = false;
     }
 
     public int[][] getMaze1() {
