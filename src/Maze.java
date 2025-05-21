@@ -49,6 +49,18 @@ public class Maze {
         return maze3Win;
     }
 
+    public void setMaze1Win(boolean maze1Win) {
+        this.maze1Win = maze1Win;
+    }
+
+    public void setMaze2Win(boolean maze2Win) {
+        this.maze2Win = maze2Win;
+    }
+
+    public void setMaze3Win(boolean maze3Win) {
+        this.maze3Win = maze3Win;
+    }
+
     public ArrayList<int[][]> getMazes() {
         return mazes;
     }
