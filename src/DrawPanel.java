@@ -12,6 +12,8 @@ public class DrawPanel extends JPanel implements KeyListener
     private boolean mazeWin;
     private ArrayList<int[][]> mazeList;
     private int mazeNum;
+    private int count1;
+    private int count2;
 
     public DrawPanel()
     {
@@ -23,6 +25,8 @@ public class DrawPanel extends JPanel implements KeyListener
         mazeWin = false;
         mazeList = mazes.getMazes();
         mazeNum = 0;
+        count1 = 0;
+        count2 = 0;
     }
 
     protected void paintComponent(Graphics g)
@@ -32,42 +36,118 @@ public class DrawPanel extends JPanel implements KeyListener
         int y = 20;
         g.setColor(Color.BLACK);
 
-        for (mazeNum = 0; mazeNum < mazeList.size(); mazeNum++) {
-            while (!mazeWin) {
-                for (int r = 0; r < 15; r++) {
-                    for (int c = 0; c < 20; c++) {
-                        g.drawRect(x, y, 40, 40);
+        if (!mazes.isMaze1Win()) {
+            for (int r = 0; r < 15; r++)
+            {
+                for (int c = 0; c < 20; c++)
+                {
+                    g.drawRect(x, y, 40, 40);
 
-                        if (!playerSight(r, c) || mazeList.get(mazeNum)[r][c] == 1) {
-                            g.fillRect(x, y, 40, 40);
-                        }
-                        if (r == player.getYCoordinate() && c == player.getXCoordinate()) {
-                            g.drawImage(player.getImage(), x, y, 40, 40, null);
-                        }
-                        if (mazeList.get(mazeNum)[r][c] == 2) {
-                            g.setColor(Color.YELLOW);
-                            g.fillRect(x, y, 40, 40);
-                            g.setColor(Color.BLACK);
-                            if (player.getXCoordinate() == c && player.getYCoordinate() == r) {
-                                mazeWin = true;
-                                if (mazeNum == 0) {
-                                    mazes.setMaze1Win(true);
-                                } else if (mazeNum == 1) {
-                                    mazes.setMaze2Win(true);
-                                } else if (mazeNum == 2) {
-                                    mazes.setMaze3Win(true);
-                                }
-                            }
-                        }
-                        x += 50;
+                    if (!playerSight(r, c) || mazeList.get(mazeNum)[r][c] == 1)
+                    {
+                        g.fillRect(x, y, 40, 40);
                     }
-                    x = 20;
-                    y += 50;
+                    if (r == player.getYCoordinate() && c == player.getXCoordinate())
+                    {
+                        g.drawImage(player.getImage(), x, y, 40, 40, null);
+                    }
+                    if (mazeList.get(mazeNum)[r][c] == 2)
+                    {
+                        g.setColor(Color.YELLOW);
+                        g.fillRect(x, y, 40, 40);
+                        g.setColor(Color.BLACK);
+                        if (player.getXCoordinate() == c && player.getYCoordinate() == r)
+                        {
+                            mazes.setMaze1Win(true);
+                        }
+                    }
+                    x += 50;
                 }
+                x = 20;
+                y += 50;
             }
-            mazeWin = false;
-            player.setXCoordinate(0);
-            player.setYCoordinate(0);
+        }
+
+        if (mazes.isMaze1Win() && !mazes.isMaze2Win())
+        {
+            if (count1 == 0)
+            {
+                mazeNum++;
+                player.setXCoordinate(0);
+                player.setYCoordinate(0);
+                count1++;
+            }
+
+            for (int r = 0; r < 15; r++)
+            {
+                for (int c = 0; c < 20; c++)
+                {
+                    g.drawRect(x, y, 40, 40);
+
+                    if (!playerSight(r, c) || mazeList.get(mazeNum)[r][c] == 1)
+                    {
+                        g.fillRect(x, y, 40, 40);
+                    }
+                    if (r == player.getYCoordinate() && c == player.getXCoordinate())
+                    {
+                        g.drawImage(player.getImage(), x, y, 40, 40, null);
+                    }
+                    if (mazeList.get(mazeNum)[r][c] == 2)
+                    {
+                        g.setColor(Color.YELLOW);
+                        g.fillRect(x, y, 40, 40);
+                        g.setColor(Color.BLACK);
+                        if (player.getXCoordinate() == c && player.getYCoordinate() == r)
+                        {
+                            mazes.setMaze2Win(true);
+                        }
+                    }
+                    x += 50;
+                }
+                x = 20;
+                y += 50;
+            }
+        }
+
+        if ((mazes.isMaze1Win() && mazes.isMaze2Win()) && !mazes.isMaze3Win())
+        {
+            if (count2 == 0)
+            {
+                mazeNum++;
+                player.setXCoordinate(0);
+                player.setYCoordinate(0);
+                count2++;
+            }
+
+            for (int r = 0; r < 15; r++)
+            {
+                for (int c = 0; c < 20; c++)
+                {
+                    g.drawRect(x, y, 40, 40);
+
+                    if (!playerSight(r, c) || mazeList.get(mazeNum)[r][c] == 1)
+                    {
+                        g.fillRect(x, y, 40, 40);
+                    }
+                    if (r == player.getYCoordinate() && c == player.getXCoordinate())
+                    {
+                        g.drawImage(player.getImage(), x, y, 40, 40, null);
+                    }
+                    if (mazeList.get(mazeNum)[r][c] == 2)
+                    {
+                        g.setColor(Color.YELLOW);
+                        g.fillRect(x, y, 40, 40);
+                        g.setColor(Color.BLACK);
+                        if (player.getXCoordinate() == c && player.getYCoordinate() == r)
+                        {
+                            mazes.setMaze3Win(true);
+                        }
+                    }
+                    x += 50;
+                }
+                x = 20;
+                y += 50;
+            }
         }
 
 
@@ -86,6 +166,24 @@ public class DrawPanel extends JPanel implements KeyListener
         playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate() - 1));
         playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate()));
         playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate() + 1));
+
+        playerSights.add((player.getYCoordinate() - 2) + "," + (player.getXCoordinate() - 2));
+        playerSights.add((player.getYCoordinate() - 2) + "," + (player.getXCoordinate()));
+        playerSights.add((player.getYCoordinate() - 2) + "," + (player.getXCoordinate() + 2));
+        playerSights.add((player.getYCoordinate()) + "," + (player.getXCoordinate() - 2));
+        playerSights.add((player.getYCoordinate()) + "," + (player.getXCoordinate() + 2));
+        playerSights.add((player.getYCoordinate() + 2) + "," + (player.getXCoordinate() - 2));
+        playerSights.add((player.getYCoordinate() + 2) + "," + (player.getXCoordinate()));
+        playerSights.add((player.getYCoordinate() + 2) + "," + (player.getXCoordinate() + 2));
+
+        playerSights.add((player.getYCoordinate() - 1) + "," + (player.getXCoordinate() - 2));
+        playerSights.add((player.getYCoordinate() - 2) + "," + (player.getXCoordinate() + 1));
+        playerSights.add((player.getYCoordinate() - 1) + "," + (player.getXCoordinate() + 2));
+        playerSights.add((player.getYCoordinate() + 2) + "," + (player.getXCoordinate() + 1));
+        playerSights.add((player.getYCoordinate() - 2) + "," + (player.getXCoordinate() - 1));
+        playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate() - 2));
+        playerSights.add((player.getYCoordinate() + 2) + "," + (player.getXCoordinate() - 1));
+        playerSights.add((player.getYCoordinate() + 1) + "," + (player.getXCoordinate() + 2));
 
         for (int i = 0; i < playerSights.size(); i++) {
             if (currentPoint.equals(playerSights.get(i))) {
