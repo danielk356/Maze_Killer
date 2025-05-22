@@ -24,7 +24,7 @@ public class DrawPanel extends JPanel implements KeyListener
         player = new Player();
         mazeWin = false;
         mazeList = mazes.getMazes();
-        mazeNum = 0;
+        mazeNum = 1;
         count1 = 0;
         count2 = 0;
     }
@@ -149,8 +149,6 @@ public class DrawPanel extends JPanel implements KeyListener
                 y += 50;
             }
         }
-
-
     }
 
     private boolean playerSight(int r, int c)
