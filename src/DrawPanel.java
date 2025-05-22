@@ -24,7 +24,7 @@ public class DrawPanel extends JPanel implements KeyListener
         player = new Player();
         mazeWin = false;
         mazeList = mazes.getMazes();
-        mazeNum = 1;
+        mazeNum = 0;
         count1 = 0;
         count2 = 0;
     }
