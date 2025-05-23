@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+
 public class DrawPanel extends JPanel implements KeyListener
 {
     private Maze mazes;
@@ -36,7 +37,8 @@ public class DrawPanel extends JPanel implements KeyListener
         int y = 20;
         g.setColor(Color.BLACK);
 
-        if (!mazes.isMaze1Win()) {
+        if (!mazes.isMaze1Win())
+        {
             for (int r = 0; r < 15; r++)
             {
                 for (int c = 0; c < 20; c++)
