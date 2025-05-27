@@ -1,5 +1,8 @@
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +14,8 @@ public class Maze {
     private boolean maze2Win;
     private boolean maze3Win;
     private ArrayList<int[][]> mazes;
+    private BufferedImage mazeWall;
+    private BufferedImage mazePath;
 
     public Maze() {
         maze1 = getMaze("mazes/Maze1");
@@ -23,6 +28,8 @@ public class Maze {
         maze1Win = false;
         maze2Win = false;
         maze3Win = false;
+        mazeWall = ImageReader.readImage("images/StoneBrick.jpg");
+        mazePath = ImageReader.readImage("images/Moss_Stone.png");
     }
 
     public int[][] getMaze1() {
@@ -35,6 +42,14 @@ public class Maze {
 
     public int[][] getMaze3() {
         return maze3;
+    }
+
+    public BufferedImage getMazeWall() {
+        return mazeWall;
+    }
+
+    public BufferedImage getMazePath() {
+        return mazePath;
     }
 
     public boolean isMaze1Win() {
@@ -99,5 +114,4 @@ public class Maze {
         }
         return maze;
     }
-
 }

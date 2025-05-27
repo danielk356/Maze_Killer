@@ -11,7 +11,7 @@ public class Player {
     public Player() {
         xCoordinate = 0;
         yCoordinate = 0;
-        image = readImage();
+        image = ImageReader.readImage("images/Player.jpg");
     }
 
     public BufferedImage getImage() {
@@ -32,17 +32,5 @@ public class Player {
 
     public void setYCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
-    }
-
-    public BufferedImage readImage() {
-        try {
-            BufferedImage image;
-            image = ImageIO.read(new File("images/Player.jpg"));
-            return image;
-        }
-        catch (IOException e) {
-            System.out.println(e);
-            return null;
-        }
     }
 }

@@ -20,7 +20,7 @@ public class DrawPanel extends JPanel implements KeyListener
     {
         setFocusable(true);
         this.addKeyListener(this);
-        this.setBackground(Color.GRAY);
+        this.setBackground(Color.BLACK);
         mazes = new Maze();
         player = new Player();
         mazeWin = false;
@@ -37,6 +37,15 @@ public class DrawPanel extends JPanel implements KeyListener
         int y = 20;
         g.setColor(Color.BLACK);
 
+        g.drawRect(1030, 130, 100, 500);
+        g.setColor(Color.GRAY);
+        g.fillRect(1030, 130, 90, 500);
+
+        g.setColor(Color.BLACK);
+        g.setFont(new Font("Courier New", Font.BOLD, 20));
+        g.drawString("MAZE 1: ", 1035, 150);
+
+
         if (!mazes.isMaze1Win())
         {
             for (int r = 0; r < 15; r++)
@@ -45,14 +54,26 @@ public class DrawPanel extends JPanel implements KeyListener
                 {
                     g.drawRect(x, y, 40, 40);
 
-                    if (!playerSight(r, c) || mazeList.get(mazeNum)[r][c] == 1)
+                    if (!playerSight(r, c))
                     {
                         g.fillRect(x, y, 40, 40);
                     }
+
+                    if (playerSight(r, c) && mazeList.get(mazeNum)[r][c] == 1)
+                    {
+                        g.drawImage(mazes.getMazeWall(), x, y, 40, 40, null);
+                    }
+
+                    else if (playerSight(r, c) && mazeList.get(mazeNum)[r][c] == 0)
+                    {
+                        g.drawImage(mazes.getMazePath(), x, y, 40, 40, null);
+                    }
+
                     if (r == player.getYCoordinate() && c == player.getXCoordinate())
                     {
                         g.drawImage(player.getImage(), x, y, 40, 40, null);
                     }
+
                     if (mazeList.get(mazeNum)[r][c] == 2)
                     {
                         g.setColor(Color.YELLOW);
@@ -86,14 +107,26 @@ public class DrawPanel extends JPanel implements KeyListener
                 {
                     g.drawRect(x, y, 40, 40);
 
-                    if (!playerSight(r, c) || mazeList.get(mazeNum)[r][c] == 1)
+                    if (!playerSight(r, c))
                     {
                         g.fillRect(x, y, 40, 40);
                     }
+
+                    if (playerSight(r, c) && mazeList.get(mazeNum)[r][c] == 1)
+                    {
+                        g.drawImage(mazes.getMazeWall(), x, y, 40, 40, null);
+                    }
+
+                    else if (playerSight(r, c) && mazeList.get(mazeNum)[r][c] == 0)
+                    {
+                        g.drawImage(mazes.getMazePath(), x, y, 40, 40, null);
+                    }
+
                     if (r == player.getYCoordinate() && c == player.getXCoordinate())
                     {
                         g.drawImage(player.getImage(), x, y, 40, 40, null);
                     }
+
                     if (mazeList.get(mazeNum)[r][c] == 2)
                     {
                         g.setColor(Color.YELLOW);
@@ -127,14 +160,26 @@ public class DrawPanel extends JPanel implements KeyListener
                 {
                     g.drawRect(x, y, 40, 40);
 
-                    if (!playerSight(r, c) || mazeList.get(mazeNum)[r][c] == 1)
+                    if (!playerSight(r, c))
                     {
                         g.fillRect(x, y, 40, 40);
                     }
+
+                    if (playerSight(r, c) && mazeList.get(mazeNum)[r][c] == 1)
+                    {
+                        g.drawImage(mazes.getMazeWall(), x, y, 40, 40, null);
+                    }
+
+                    else if (playerSight(r, c) && mazeList.get(mazeNum)[r][c] == 0)
+                    {
+                        g.drawImage(mazes.getMazePath(), x, y, 40, 40, null);
+                    }
+
                     if (r == player.getYCoordinate() && c == player.getXCoordinate())
                     {
                         g.drawImage(player.getImage(), x, y, 40, 40, null);
                     }
+
                     if (mazeList.get(mazeNum)[r][c] == 2)
                     {
                         g.setColor(Color.YELLOW);
