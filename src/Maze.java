@@ -1,8 +1,6 @@
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -42,18 +40,6 @@ public class Maze {
         maze2StarFill = ImageReader.readImage("images/Maze2StarFill.png");
         maze3StarEmpty = ImageReader.readImage("images/Maze3StarEmpty.png");
         maze3StarFill = ImageReader.readImage("images/Maze3StarFill.png");
-    }
-
-    public int[][] getMaze1() {
-        return maze1;
-    }
-
-    public int[][] getMaze2() {
-        return maze2;
-    }
-
-    public int[][] getMaze3() {
-        return maze3;
     }
 
     public BufferedImage getMazeWall() {
@@ -114,16 +100,6 @@ public class Maze {
 
     public ArrayList<int[][]> getMazes() {
         return mazes;
-    }
-
-    // testing if getMaze works
-    public void printMaze() {
-        for (int[] row : maze1) {
-            for (int num : row) {
-                System.out.print(num + " ");
-            }
-            System.out.println();
-        }
     }
 
     // get the maze from files

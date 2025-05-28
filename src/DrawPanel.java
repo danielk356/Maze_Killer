@@ -10,7 +10,6 @@ public class DrawPanel extends JPanel implements KeyListener
 {
     private Maze mazes;
     private Player player;
-    private boolean mazeWin;
     private ArrayList<int[][]> mazeList;
     private int mazeNum;
     private int count1;
@@ -23,7 +22,6 @@ public class DrawPanel extends JPanel implements KeyListener
         this.setBackground(Color.BLACK);
         mazes = new Maze();
         player = new Player();
-        mazeWin = false;
         mazeList = mazes.getMazes();
         mazeNum = 0;
         count1 = 0;
