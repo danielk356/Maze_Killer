@@ -16,6 +16,12 @@ public class Maze {
     private ArrayList<int[][]> mazes;
     private BufferedImage mazeWall;
     private BufferedImage mazePath;
+    private BufferedImage maze1StarEmpty;
+    private BufferedImage maze1StarFill;
+    private BufferedImage maze2StarEmpty;
+    private BufferedImage maze2StarFill;
+    private BufferedImage maze3StarEmpty;
+    private BufferedImage maze3StarFill;
 
     public Maze() {
         maze1 = getMaze("mazes/Maze1");
@@ -30,6 +36,12 @@ public class Maze {
         maze3Win = false;
         mazeWall = ImageReader.readImage("images/StoneBrick.jpg");
         mazePath = ImageReader.readImage("images/Moss_Stone.png");
+        maze1StarEmpty = ImageReader.readImage("images/Maze1StarEmpty.png");
+        maze1StarFill = ImageReader.readImage("images/Maze1StarFill.png");
+        maze2StarEmpty = ImageReader.readImage("images/Maze2StarEmpty.png");
+        maze2StarFill = ImageReader.readImage("images/Maze2StarFill.png");
+        maze3StarEmpty = ImageReader.readImage("images/Maze3StarEmpty.png");
+        maze3StarFill = ImageReader.readImage("images/Maze3StarFill.png");
     }
 
     public int[][] getMaze1() {
@@ -50,6 +62,30 @@ public class Maze {
 
     public BufferedImage getMazePath() {
         return mazePath;
+    }
+
+    public BufferedImage getMaze1StarFill() {
+        return maze1StarFill;
+    }
+
+    public BufferedImage getMaze1StarEmpty() {
+        return maze1StarEmpty;
+    }
+
+    public BufferedImage getMaze2StarEmpty() {
+        return maze2StarEmpty;
+    }
+
+    public BufferedImage getMaze2StarFill() {
+        return maze2StarFill;
+    }
+
+    public BufferedImage getMaze3StarEmpty() {
+        return maze3StarEmpty;
+    }
+
+    public BufferedImage getMaze3StarFill() {
+        return maze3StarFill;
     }
 
     public boolean isMaze1Win() {

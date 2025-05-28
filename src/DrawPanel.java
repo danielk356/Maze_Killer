@@ -45,6 +45,36 @@ public class DrawPanel extends JPanel implements KeyListener
         g.setFont(new Font("Courier New", Font.BOLD, 20));
         g.drawString("MAZE 1: ", 1035, 150);
 
+        if (!mazes.isMaze1Win())
+        {
+            g.drawImage(mazes.getMaze1StarEmpty(), 1055, 160, 40, 40, null);
+        }
+        else
+        {
+            g.drawImage(mazes.getMaze1StarFill(), 1055, 160, 40, 40, null);
+        }
+
+        g.drawString("MAZE 2: ", 1035, 250);
+
+        if (!mazes.isMaze2Win())
+        {
+            g.drawImage(mazes.getMaze2StarEmpty(), 1055, 260, 40, 40, null);
+        }
+        else
+        {
+            g.drawImage(mazes.getMaze2StarFill(), 1055, 260, 40, 40, null);
+        }
+
+        g.drawString("MAZE 3: ", 1035, 350);
+
+        if (!mazes.isMaze3Win())
+        {
+            g.drawImage(mazes.getMaze3StarEmpty(), 1055, 360, 40, 40, null);
+        }
+        else
+        {
+            g.drawImage(mazes.getMaze3StarFill(), 1055, 360, 40, 40, null);
+        }
 
         if (!mazes.isMaze1Win())
         {
