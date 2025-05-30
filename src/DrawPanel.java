@@ -1,12 +1,15 @@
 import java.awt.*;
 import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.awt.Rectangle;
 
 
-public class DrawPanel extends JPanel implements KeyListener
+public class DrawPanel extends JPanel implements KeyListener, MouseListener
 {
     private Maze mazes;
     private Player player;
@@ -14,11 +17,14 @@ public class DrawPanel extends JPanel implements KeyListener
     private int mazeNum;
     private int count1;
     private int count2;
+    private boolean start;
+    private Rectangle startButton;
 
     public DrawPanel()
     {
         setFocusable(true);
         this.addKeyListener(this);
+        this.addMouseListener(this);
         this.setBackground(Color.BLACK);
         mazes = new Maze();
         player = new Player();
@@ -26,6 +32,8 @@ public class DrawPanel extends JPanel implements KeyListener
         mazeNum = 0;
         count1 = 0;
         count2 = 0;
+        start = false;
+        startButton = new Rectangle(430, 325, 320, 60);
     }
 
     protected void paintComponent(Graphics g)
@@ -74,7 +82,21 @@ public class DrawPanel extends JPanel implements KeyListener
             g.drawImage(mazes.getMaze3StarFill(), 1055, 360, 40, 40, null);
         }
 
-        if (!mazes.isMaze1Win())
+        if (!start)
+        {
+            g.drawImage(mazes.getMazePath(), 0, 0, 1150, 820, null);
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Courier New", Font.BOLD, 70));
+            g.drawString("MAZE", 410, 120);
+            g.setColor(Color.RED);
+            g.drawString("CRAFT", 580, 120);
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Courier New", Font.BOLD, 50));
+            g.drawString("Start Game", 440, 370);
+            g.drawRect((int)startButton.getX(), (int)startButton.getY(), (int)startButton.getWidth(), (int)startButton.getHeight());
+        }
+
+        if (!mazes.isMaze1Win() && start)
         {
             for (int r = 0; r < 15; r++)
             {
@@ -119,7 +141,7 @@ public class DrawPanel extends JPanel implements KeyListener
             }
         }
 
-        if (mazes.isMaze1Win() && !mazes.isMaze2Win())
+        if ((mazes.isMaze1Win() && !mazes.isMaze2Win()) && start)
         {
             if (count1 == 0)
             {
@@ -172,7 +194,7 @@ public class DrawPanel extends JPanel implements KeyListener
             }
         }
 
-        if ((mazes.isMaze1Win() && mazes.isMaze2Win()) && !mazes.isMaze3Win())
+        if ((mazes.isMaze1Win() && mazes.isMaze2Win()) && (!mazes.isMaze3Win() && start))
         {
             if (count2 == 0)
             {
@@ -307,6 +329,40 @@ public class DrawPanel extends JPanel implements KeyListener
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e)
+    {
+        Point clicked = e.getPoint();
+
+        if (e.getButton() == 1)
+        {
+            if (startButton.contains(clicked))
+            {
+                start = true;
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
 
     }
 }
