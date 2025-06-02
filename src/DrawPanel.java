@@ -5,6 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.Rectangle;
 
@@ -245,6 +246,19 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 x = 20;
                 y += 50;
             }
+        }
+        if (mazes.isMaze1Win() && (mazes.isMaze2Win() && mazes.isMaze3Win()))
+        {
+            BufferedImage winBackground = ImageReader.readImage("images/WinBackground.png");
+            g.drawImage(winBackground, 0, 0, 1150, 820, null);
+            g.setColor(Color.GREEN);
+            g.setFont(new Font("Courier New", Font.BOLD, 70));
+            g.drawString("MAZE", 410, 120);
+            g.setColor(Color.RED);
+            g.drawString("CRAFT", 580, 120);
+            g.setColor(Color.BLACK);
+            g.setFont(new Font("Courier New", Font.BOLD, 100));
+            g.drawString("YOU WIN", 370, 380);
         }
     }
 
