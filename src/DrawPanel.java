@@ -309,35 +309,39 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
     @Override
     public void keyPressed(KeyEvent e)
     {
-        if (e.getKeyCode() == KeyEvent.VK_A)
+        if (start)
         {
-            if (player.getXCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() - 1] != 1)
+            if (e.getKeyCode() == KeyEvent.VK_A)
             {
-                player.setXCoordinate(player.getXCoordinate() - 1);
+                if (player.getXCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() - 1] != 1)
+                {
+                    player.setXCoordinate(player.getXCoordinate() - 1);
 
+                }
             }
-        }
-        if (e.getKeyCode() == KeyEvent.VK_D)
-        {
-            if (player.getXCoordinate() != mazeList.get(mazeNum)[0].length - 1 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
+            if (e.getKeyCode() == KeyEvent.VK_D)
             {
-                player.setXCoordinate(player.getXCoordinate() + 1);
+                if (player.getXCoordinate() != mazeList.get(mazeNum)[0].length - 1 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
+                {
+                    player.setXCoordinate(player.getXCoordinate() + 1);
+                }
             }
-        }
-        if (e.getKeyCode() == KeyEvent.VK_W)
-        {
-            if (player.getYCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
+            if (e.getKeyCode() == KeyEvent.VK_W)
             {
-                player.setYCoordinate(player.getYCoordinate() - 1);
+                if (player.getYCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
+                {
+                    player.setYCoordinate(player.getYCoordinate() - 1);
+                }
             }
-        }
-        if (e.getKeyCode() == KeyEvent.VK_S)
-        {
-            if (player.getYCoordinate() != mazeList.get(mazeNum).length - 1 && mazeList.get(mazeNum)[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
+            if (e.getKeyCode() == KeyEvent.VK_S)
             {
-                player.setYCoordinate(player.getYCoordinate() + 1);
+                if (player.getYCoordinate() != mazeList.get(mazeNum).length - 1 && mazeList.get(mazeNum)[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
+                {
+                    player.setYCoordinate(player.getYCoordinate() + 1);
+                }
             }
         }
+
     }
 
     @Override
