@@ -20,6 +20,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
     private int count2;
     private boolean start;
     private Rectangle startButton;
+    private Rectangle playAgainButton;
 
     public DrawPanel()
     {
@@ -35,6 +36,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
         count2 = 0;
         start = false;
         startButton = new Rectangle(430, 325, 320, 60);
+        playAgainButton = new Rectangle(410, 498, 335, 80);
     }
 
     protected void paintComponent(Graphics g)
@@ -253,6 +255,9 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
             g.setColor(Color.BLACK);
             g.setFont(new Font("Courier New", Font.BOLD, 100));
             g.drawString("YOU WIN", 370, 380);
+            g.setFont(new Font("Courier New", Font.BOLD, 50));
+            g.drawString("Play Again?", 415, 550);
+            g.drawRect((int)playAgainButton.getX(), (int)playAgainButton.getY(), (int)playAgainButton.getWidth(), (int)playAgainButton.getHeight());
         }
     }
 
@@ -350,6 +355,18 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
             if (startButton.contains(clicked))
             {
                 start = true;
+            }
+            else if (playAgainButton.contains(clicked))
+            {
+                start = false;
+                mazes.setMaze1Win(false);
+                mazes.setMaze2Win(false);
+                mazes.setMaze3Win(false);
+                player.setXCoordinate(0);
+                player.setYCoordinate(0);
+                count1 = 0;
+                count2 = 0;
+                mazeNum = 0;
             }
         }
     }
