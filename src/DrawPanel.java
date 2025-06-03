@@ -127,9 +127,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
 
                     if (mazeList.get(mazeNum)[r][c] == 2)
                     {
-                        g.setColor(Color.YELLOW);
-                        g.fillRect(x, y, 40, 40);
-                        g.setColor(Color.BLACK);
+                        g.drawImage(mazes.getMazeWinBlock(), x, y, 40, 40, null);
                         if (player.getXCoordinate() == c && player.getYCoordinate() == r)
                         {
                             mazes.setMaze1Win(true);
@@ -180,9 +178,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
 
                     if (mazeList.get(mazeNum)[r][c] == 2)
                     {
-                        g.setColor(Color.YELLOW);
-                        g.fillRect(x, y, 40, 40);
-                        g.setColor(Color.BLACK);
+                        g.drawImage(mazes.getMazeWinBlock(), x, y, 40, 40, null);
                         if (player.getXCoordinate() == c && player.getYCoordinate() == r)
                         {
                             mazes.setMaze2Win(true);
@@ -233,9 +229,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
 
                     if (mazeList.get(mazeNum)[r][c] == 2)
                     {
-                        g.setColor(Color.YELLOW);
-                        g.fillRect(x, y, 40, 40);
-                        g.setColor(Color.BLACK);
+                        g.drawImage(mazes.getMazeWinBlock(), x, y, 40, 40, null);
                         if (player.getXCoordinate() == c && player.getYCoordinate() == r)
                         {
                             mazes.setMaze3Win(true);

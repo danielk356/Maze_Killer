@@ -14,6 +14,7 @@ public class Maze {
     private ArrayList<int[][]> mazes;
     private BufferedImage mazeWall;
     private BufferedImage mazePath;
+    private BufferedImage mazeWinBlock;
     private BufferedImage maze1StarEmpty;
     private BufferedImage maze1StarFill;
     private BufferedImage maze2StarEmpty;
@@ -34,6 +35,7 @@ public class Maze {
         maze3Win = false;
         mazeWall = ImageReader.readImage("images/StoneBrick.jpg");
         mazePath = ImageReader.readImage("images/Moss_Stone.png");
+        mazeWinBlock = ImageReader.readImage("images/WinBackground.png");
         maze1StarEmpty = ImageReader.readImage("images/Maze1StarEmpty.png");
         maze1StarFill = ImageReader.readImage("images/Maze1StarFill.png");
         maze2StarEmpty = ImageReader.readImage("images/Maze2StarEmpty.png");
@@ -48,6 +50,10 @@ public class Maze {
 
     public BufferedImage getMazePath() {
         return mazePath;
+    }
+
+    public BufferedImage getMazeWinBlock() {
+        return mazeWinBlock;
     }
 
     public BufferedImage getMaze1StarFill() {
