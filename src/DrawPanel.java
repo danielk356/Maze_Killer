@@ -15,6 +15,8 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
     private Maze mazes;
     private Player player;
     private ArrayList<int[][]> mazeList;
+    private BriefRespite briefRespite;
+    private FinalTrial finalTrial;
     private int mazeNum;
     private int count1;
     private int count2;
@@ -30,6 +32,8 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
         this.setBackground(Color.BLACK);
         mazes = new Maze();
         player = new Player();
+        briefRespite = new BriefRespite();
+        finalTrial = new FinalTrial();
         mazeList = mazes.getMazes();
         mazeNum = 0;
         count1 = 0;
@@ -235,6 +239,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         if (player.getXCoordinate() == c && player.getYCoordinate() == r)
                         {
                             mazes.setMaze3Win(true);
+                            briefRespite.setBriefRespiteTrigger(true);
                         }
                     }
                     x += 50;
@@ -243,7 +248,12 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 y += 50;
             }
         }
-        if (mazes.isMaze1Win() && (mazes.isMaze2Win() && mazes.isMaze3Win()))
+
+        if (briefRespite.isBriefRespiteTrigger())
+        {
+
+        }
+        if ((mazes.isMaze1Win() && finalTrial.isFinalTrialWin()) && (mazes.isMaze2Win() && mazes.isMaze3Win()))
         {
             BufferedImage winBackground = ImageReader.readImage("images/WinBackground.png");
             g.drawImage(winBackground, 0, 0, 1150, 820, null);
