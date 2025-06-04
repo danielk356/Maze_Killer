@@ -20,7 +20,9 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
     private int mazeNum;
     private int count1;
     private int count2;
+    private int count3;
     private boolean start;
+    private boolean mazeSection;
     private Rectangle startButton;
     private Rectangle playAgainButton;
 
@@ -38,7 +40,9 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
         mazeNum = 0;
         count1 = 0;
         count2 = 0;
+        count3 = 0;
         start = false;
+        mazeSection = true;
         startButton = new Rectangle(430, 325, 320, 60);
         playAgainButton = new Rectangle(410, 498, 335, 80);
     }
@@ -251,6 +255,35 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
 
         if (briefRespite.isBriefRespiteTrigger())
         {
+            if (count3 == 0)
+            {
+                player.setXCoordinate(0);
+                player.setYCoordinate(0);
+                mazeSection = false;
+                count3++;
+            }
+
+            for (int r = 0; r < 15; r++)
+            {
+                for (int c = 0; c < 20; c++)
+                {
+                    g.drawRect(x, y, 40, 40);
+
+                    if (briefRespite.getBriefRespiteRoom()[r][c] == 0)
+                    {
+                        g.drawImage(mazes.getMazePath(), x, y, 40, 40, null);
+                    }
+
+                    if (r == player.getYCoordinate() && c == player.getXCoordinate())
+                    {
+                        g.drawImage(player.getImage(), x, y, 40, 40, null);
+                    }
+
+                    x += 50;
+                }
+                x = 20;
+                y += 50;
+            }
 
         }
         if ((mazes.isMaze1Win() && finalTrial.isFinalTrialWin()) && (mazes.isMaze2Win() && mazes.isMaze3Win()))
@@ -323,35 +356,73 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
         {
             if (e.getKeyCode() == KeyEvent.VK_A)
             {
-                if (player.getXCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() - 1] != 1)
+                if (mazeSection)
                 {
-                    player.setXCoordinate(player.getXCoordinate() - 1);
-
+                    if (player.getXCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() - 1] != 1)
+                    {
+                        player.setXCoordinate(player.getXCoordinate() - 1);
+                    }
+                }
+                if (briefRespite.isBriefRespiteTrigger())
+                {
+                    if (player.getXCoordinate() != 0 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate()][player.getXCoordinate() - 1] != 1)
+                    {
+                        player.setXCoordinate(player.getXCoordinate() - 1);
+                    }
                 }
             }
             if (e.getKeyCode() == KeyEvent.VK_D)
             {
-                if (player.getXCoordinate() != mazeList.get(mazeNum)[0].length - 1 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
+                if (mazeSection)
                 {
-                    player.setXCoordinate(player.getXCoordinate() + 1);
+                    if (player.getXCoordinate() != mazeList.get(mazeNum)[0].length - 1 && mazeList.get(mazeNum)[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
+                    {
+                        player.setXCoordinate(player.getXCoordinate() + 1);
+                    }
+                }
+                if (briefRespite.isBriefRespiteTrigger())
+                {
+                    if (player.getXCoordinate() != briefRespite.getBriefRespiteRoom()[0].length - 1 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
+                    {
+                        player.setXCoordinate(player.getXCoordinate() + 1);
+                    }
                 }
             }
             if (e.getKeyCode() == KeyEvent.VK_W)
             {
-                if (player.getYCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
+                if (mazeSection)
                 {
-                    player.setYCoordinate(player.getYCoordinate() - 1);
+                    if (player.getYCoordinate() != 0 && mazeList.get(mazeNum)[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
+                    {
+                        player.setYCoordinate(player.getYCoordinate() - 1);
+                    }
+                }
+                if (briefRespite.isBriefRespiteTrigger())
+                {
+                    if (player.getYCoordinate() != 0 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
+                    {
+                        player.setYCoordinate(player.getYCoordinate() - 1);
+                    }
                 }
             }
             if (e.getKeyCode() == KeyEvent.VK_S)
             {
-                if (player.getYCoordinate() != mazeList.get(mazeNum).length - 1 && mazeList.get(mazeNum)[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
+                if (mazeSection)
                 {
-                    player.setYCoordinate(player.getYCoordinate() + 1);
+                    if (player.getYCoordinate() != mazeList.get(mazeNum).length - 1 && mazeList.get(mazeNum)[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
+                    {
+                        player.setYCoordinate(player.getYCoordinate() + 1);
+                    }
+                }
+                if (briefRespite.isBriefRespiteTrigger())
+                {
+                    if (player.getYCoordinate() != briefRespite.getBriefRespiteRoom().length - 1 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
+                    {
+                        player.setYCoordinate(player.getYCoordinate() + 1);
+                    }
                 }
             }
         }
-
     }
 
     @Override
@@ -376,6 +447,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 mazes.setMaze1Win(false);
                 mazes.setMaze2Win(false);
                 mazes.setMaze3Win(false);
+                mazeSection = true;
                 player.setXCoordinate(0);
                 player.setYCoordinate(0);
                 count1 = 0;

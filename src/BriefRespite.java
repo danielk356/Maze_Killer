@@ -12,7 +12,7 @@ public class BriefRespite
 
     public BriefRespite()
     {
-        briefRespiteRoom = getBriefRespiteRoom("Mazecraft/BriefRespiteRoom");
+        briefRespiteRoom = getBriefRespiteRoom("briefRespiteRoom/BriefRespiteRoom");
         villagerImage = ImageReader.readImage("images/villager.png");
 
         briefRespiteTrigger = false;
