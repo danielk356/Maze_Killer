@@ -463,10 +463,12 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 mazes.setMaze2Win(false);
                 mazes.setMaze3Win(false);
                 mazeSection = true;
+                briefRespite.setBriefRespiteTrigger(false);
                 player.setXCoordinate(0);
                 player.setYCoordinate(0);
                 count1 = 0;
                 count2 = 0;
+                count3 = 0;
                 mazeNum = 0;
             }
         }
