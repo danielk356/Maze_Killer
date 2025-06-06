@@ -7,6 +7,7 @@ public class BriefRespite
 {
     private int[][] briefRespiteRoom;
     private boolean briefRespiteTrigger;
+    private boolean talkingToVillager;
     private BufferedImage villagerImage;
     private BufferedImage roomFloorImage;
 
@@ -14,7 +15,8 @@ public class BriefRespite
     {
         briefRespiteRoom = getBriefRespiteRoom("briefRespiteRoom/BriefRespiteRoom");
         villagerImage = ImageReader.readImage("images/villager.png");
-
+        roomFloorImage = ImageReader.readImage("images/BriefRespiteFloor.jpg");
+        talkingToVillager = false;
         briefRespiteTrigger = false;
     }
 

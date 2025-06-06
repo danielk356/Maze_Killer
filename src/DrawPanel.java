@@ -271,7 +271,17 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
 
                     if (briefRespite.getBriefRespiteRoom()[r][c] == 0)
                     {
-                        g.drawImage(mazes.getMazePath(), x, y, 40, 40, null);
+                        g.drawImage(briefRespite.getRoomFloorImage(), x, y, 40, 40, null);
+                    }
+
+                    if (briefRespite.getBriefRespiteRoom()[r][c] == 2)
+                    {
+                        g.drawImage(mazes.getMazeWinBlock(), x, y, 40, 40, null);
+                    }
+
+                    if (briefRespite.getBriefRespiteRoom()[r][c] == 3)
+                    {
+                        g.drawImage(briefRespite.getVillagerImage(), x, y, 40, 40, null);
                     }
 
                     if (r == player.getYCoordinate() && c == player.getXCoordinate())
