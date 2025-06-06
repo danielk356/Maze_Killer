@@ -36,6 +36,14 @@ public class BriefRespite
         return briefRespiteTrigger;
     }
 
+    public boolean isTalkingToVillager() {
+        return talkingToVillager;
+    }
+
+    public void setTalkingToVillager(boolean talkingToVillager) {
+        this.talkingToVillager = talkingToVillager;
+    }
+
     public void setBriefRespiteTrigger(boolean briefRespiteTrigger) {
         this.briefRespiteTrigger = briefRespiteTrigger;
     }

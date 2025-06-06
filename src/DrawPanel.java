@@ -289,6 +289,11 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         g.drawImage(player.getImage(), x, y, 40, 40, null);
                     }
 
+                    if (briefRespite.getBriefRespiteRoom()[player.getYCoordinate()][player.getXCoordinate()] == 3)
+                    {
+                        briefRespite.setTalkingToVillager(true);
+                    }
+
                     x += 50;
                 }
                 x = 20;
@@ -373,7 +378,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         player.setXCoordinate(player.getXCoordinate() - 1);
                     }
                 }
-                if (briefRespite.isBriefRespiteTrigger())
+                if (briefRespite.isBriefRespiteTrigger() && !briefRespite.isTalkingToVillager())
                 {
                     if (player.getXCoordinate() != 0 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate()][player.getXCoordinate() - 1] != 1)
                     {
@@ -390,7 +395,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         player.setXCoordinate(player.getXCoordinate() + 1);
                     }
                 }
-                if (briefRespite.isBriefRespiteTrigger())
+                if (briefRespite.isBriefRespiteTrigger() && !briefRespite.isTalkingToVillager())
                 {
                     if (player.getXCoordinate() != briefRespite.getBriefRespiteRoom()[0].length - 1 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
                     {
@@ -407,7 +412,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         player.setYCoordinate(player.getYCoordinate() - 1);
                     }
                 }
-                if (briefRespite.isBriefRespiteTrigger())
+                if (briefRespite.isBriefRespiteTrigger() && !briefRespite.isTalkingToVillager())
                 {
                     if (player.getYCoordinate() != 0 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
                     {
@@ -424,7 +429,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         player.setYCoordinate(player.getYCoordinate() + 1);
                     }
                 }
-                if (briefRespite.isBriefRespiteTrigger())
+                if (briefRespite.isBriefRespiteTrigger() && !briefRespite.isTalkingToVillager())
                 {
                     if (player.getYCoordinate() != briefRespite.getBriefRespiteRoom().length - 1 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
                     {
