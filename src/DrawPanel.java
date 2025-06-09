@@ -25,6 +25,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
     private boolean mazeSection;
     private Rectangle startButton;
     private Rectangle playAgainButton;
+    private Rectangle okButton;
 
     public DrawPanel()
     {
@@ -45,6 +46,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
         mazeSection = true;
         startButton = new Rectangle(430, 325, 320, 60);
         playAgainButton = new Rectangle(410, 498, 335, 80);
+        okButton = new Rectangle(500, 600, 80, 80);
     }
 
     protected void paintComponent(Graphics g)
@@ -303,6 +305,14 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         g.setColor(Color.BLACK);
                         g.setFont(new Font("Courier New", Font.BOLD, 23));
                         g.drawString("Villager: Your final trial awaits you", 280, 540);
+
+                        g.setColor(Color.GRAY);
+                        g.drawRect((int)okButton.getX(), (int)okButton.getY(), (int)okButton.getWidth(), (int)okButton.getHeight());
+                        g.fillRect((int)okButton.getX(), (int)okButton.getY(), (int)okButton.getWidth(), (int)okButton.getHeight());
+
+                        g.setColor(Color.BLACK);
+                        g.drawString("Ok", 525, 640);
+
                     }
 
                     x += 50;
@@ -474,13 +484,18 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 mazes.setMaze2Win(false);
                 mazes.setMaze3Win(false);
                 mazeSection = true;
-                briefRespite.setBriefRespiteTrigger(false);
+                finalTrial.setFinalTrialWin(false);
                 player.setXCoordinate(0);
                 player.setYCoordinate(0);
                 count1 = 0;
                 count2 = 0;
                 count3 = 0;
                 mazeNum = 0;
+            }
+            else if (okButton.contains(clicked))
+            {
+
+                briefRespite.setBriefRespiteTrigger(false);
             }
         }
     }
