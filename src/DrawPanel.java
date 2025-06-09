@@ -294,6 +294,17 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         briefRespite.setTalkingToVillager(true);
                     }
 
+                    if (briefRespite.isTalkingToVillager())
+                    {
+                        g.drawRect(280, 500, 500, 80);
+                        g.setColor(Color.GRAY);
+                        g.fillRect(280, 500, 520, 80);
+
+                        g.setColor(Color.BLACK);
+                        g.setFont(new Font("Courier New", Font.BOLD, 23));
+                        g.drawString("Villager: Your final trial awaits you", 280, 540);
+                    }
+
                     x += 50;
                 }
                 x = 20;
