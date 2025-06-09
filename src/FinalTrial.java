@@ -12,6 +12,7 @@ public class FinalTrial
 
     public FinalTrial()
     {
+        finalTrialRoom = getFinalTrialRoom("finalTrialRoom/FinalTrialRoom");
         finalTrialWin = false;
         finalTrialTrigger = false;
     }
@@ -35,5 +36,29 @@ public class FinalTrial
 
     public void setFinalTrialTrigger(boolean finalTrialTrigger) {
         this.finalTrialTrigger = finalTrialTrigger;
+    }
+
+    private int[][] getFinalTrialRoom(String fileName) {
+        File f = new File(fileName);
+        Scanner s = null;
+        try {
+            s = new Scanner(f);
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+            System.exit(1);
+        }
+        int[][] room = new int[15][20];
+        for (int row = 0; row < room.length; row++) {
+            if (s.hasNextLine()) {
+                String[] rowString = s.nextLine().split(",");
+                int[] rowInt = new int[rowString.length];
+                for (int i = 0; i < rowInt.length; i++) {
+                    rowInt[i] = Integer.parseInt(rowString[i]);
+                }
+                room[row] = rowInt;
+            }
+        }
+        return room;
     }
 }

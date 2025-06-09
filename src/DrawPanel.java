@@ -21,6 +21,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
     private int count1;
     private int count2;
     private int count3;
+    private int count4;
     private boolean start;
     private boolean mazeSection;
     private Rectangle startButton;
@@ -42,6 +43,7 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
         count1 = 0;
         count2 = 0;
         count3 = 0;
+        count4 = 0;
         start = false;
         mazeSection = true;
         startButton = new Rectangle(430, 325, 320, 60);
@@ -320,7 +322,37 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 x = 20;
                 y += 50;
             }
+        }
 
+        if (finalTrial.isFinalTrialTrigger())
+        {
+            if (count4 == 0)
+            {
+                player.setXCoordinate(0);
+                player.setYCoordinate(0);
+                count4++;
+            }
+            for (int r = 0; r < 15; r++)
+            {
+                for (int c = 0; c < 20; c++)
+                {
+                    g.drawRect(x, y, 40, 40);
+
+                    if (finalTrial.getFinalTrialRoom()[r][c] == 0)
+                    {
+                        g.drawImage(mazes.getMazePath(), x, y, 40, 40, null);
+                    }
+
+                    if (r == player.getYCoordinate() && c == player.getXCoordinate())
+                    {
+                        g.drawImage(player.getImage(), x, y, 40, 40, null);
+                    }
+
+                    x += 50;
+                }
+                x = 20;
+                y += 50;
+            }
         }
         if ((mazes.isMaze1Win() && finalTrial.isFinalTrialWin()) && (mazes.isMaze2Win() && mazes.isMaze3Win()))
         {
@@ -406,6 +438,13 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         player.setXCoordinate(player.getXCoordinate() - 1);
                     }
                 }
+                if (finalTrial.isFinalTrialTrigger())
+                {
+                    if (player.getXCoordinate() != 0 && finalTrial.getFinalTrialRoom()[player.getYCoordinate()][player.getXCoordinate() - 1] != 1)
+                    {
+                        player.setXCoordinate(player.getXCoordinate() - 1);
+                    }
+                }
             }
             if (e.getKeyCode() == KeyEvent.VK_D)
             {
@@ -419,6 +458,13 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 if (briefRespite.isBriefRespiteTrigger() && !briefRespite.isTalkingToVillager())
                 {
                     if (player.getXCoordinate() != briefRespite.getBriefRespiteRoom()[0].length - 1 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
+                    {
+                        player.setXCoordinate(player.getXCoordinate() + 1);
+                    }
+                }
+                if (finalTrial.isFinalTrialTrigger())
+                {
+                    if (player.getXCoordinate() != finalTrial.getFinalTrialRoom()[0].length - 1 && finalTrial.getFinalTrialRoom()[player.getYCoordinate()][player.getXCoordinate() + 1] != 1)
                     {
                         player.setXCoordinate(player.getXCoordinate() + 1);
                     }
@@ -440,6 +486,13 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                         player.setYCoordinate(player.getYCoordinate() - 1);
                     }
                 }
+                if (finalTrial.isFinalTrialTrigger())
+                {
+                    if (player.getYCoordinate() != 0 && finalTrial.getFinalTrialRoom()[player.getYCoordinate() - 1][player.getXCoordinate()] != 1)
+                    {
+                        player.setYCoordinate(player.getYCoordinate() - 1);
+                    }
+                }
             }
             if (e.getKeyCode() == KeyEvent.VK_S)
             {
@@ -453,6 +506,13 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 if (briefRespite.isBriefRespiteTrigger() && !briefRespite.isTalkingToVillager())
                 {
                     if (player.getYCoordinate() != briefRespite.getBriefRespiteRoom().length - 1 && briefRespite.getBriefRespiteRoom()[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
+                    {
+                        player.setYCoordinate(player.getYCoordinate() + 1);
+                    }
+                }
+                if (finalTrial.isFinalTrialTrigger())
+                {
+                    if (player.getYCoordinate() != finalTrial.getFinalTrialRoom().length - 1 && finalTrial.getFinalTrialRoom()[player.getYCoordinate() + 1][player.getXCoordinate()] != 1)
                     {
                         player.setYCoordinate(player.getYCoordinate() + 1);
                     }
@@ -490,12 +550,14 @@ public class DrawPanel extends JPanel implements KeyListener, MouseListener
                 count1 = 0;
                 count2 = 0;
                 count3 = 0;
+                count4 = 0;
                 mazeNum = 0;
             }
             else if (okButton.contains(clicked))
             {
 
                 briefRespite.setBriefRespiteTrigger(false);
+                finalTrial.setFinalTrialTrigger(true);
             }
         }
     }

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Final Project.iml" filepath="$PROJECT_DIR$/Final Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/briefRespiteRoom/briefRespiteRoom.iml" filepath="$PROJECT_DIR$/briefRespiteRoom/briefRespiteRoom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/finalTrialRoom/finalTrialRoom.iml" filepath="$PROJECT_DIR$/finalTrialRoom/finalTrialRoom.iml" />
       <module fileurl="file://$PROJECT_DIR$/sounds/sounds.iml" filepath="$PROJECT_DIR$/sounds/sounds.iml" />
     </modules>
   </component>
